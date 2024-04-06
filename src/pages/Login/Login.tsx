@@ -28,7 +28,7 @@ export const Login: FunctionComponent = (): ReactNode => {
             <input
               type="email"
               placeholder="Email"
-              className="w-full border border-gray-200 outline-none py-2 pl-7 pr-2 rounded-lg"
+              className="w-full border border-gray-200 outline-none py-2 pl-7 pr-2 rounded-lg transition-all duration-300 focus:border-gray-500 hover:border-gray-500"
             />
           </div>
           <div className="relative">
@@ -36,7 +36,7 @@ export const Login: FunctionComponent = (): ReactNode => {
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="Password"
-              className="w-full border border-gray-200 outline-none py-2 px-7 rounded-lg"
+              className="w-full border border-gray-200 outline-none py-2 px-7 rounded-lg transition-all duration-300 focus:border-gray-500 hover:border-gray-500"
             />
             {showPassword ? (
               <RiEyeOffLine
@@ -52,7 +52,7 @@ export const Login: FunctionComponent = (): ReactNode => {
           </div>
           <button
             type="submit"
-            className="bg-sky-600 text-white w-full py-2 rounded-lg hover:bg-sky-700 transition duration-200"
+            className="bg-sky-600 text-white w-full py-2 rounded-lg hover:bg-sky-700 transition duration-300"
           >
             Log In
           </button>
