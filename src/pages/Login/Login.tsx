@@ -26,22 +26,11 @@ export const Login: FunctionComponent = (): ReactNode => {
             type="email"
             placeholder="Email"
             icon={RiMailLine}
-            label="Email"
-            // value=""
-            id="email"
-            disabled={false}
             register={register}
-            // onChange={() => {}}
             {...register('email')}
           />
           <Password
-            // value=""
-            // id="password"
-            // value=""
-            // name="password"
             placeholder="Password"
-            disabled={false}
-            // onChange={() => {}}
             toggleMask
             register={register}
             {...register('password')}
