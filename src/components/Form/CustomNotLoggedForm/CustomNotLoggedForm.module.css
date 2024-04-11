@@ -1,0 +1,16 @@
+.form {
+  @apply bg-white 
+      p-8
+      shadow-md
+      rounded-lg
+      w-full
+      md:w-96;
+}
+
+.title {
+  @apply text-3xl 
+      font-bold 
+      text-gray-800
+      text-center
+      uppercase;
+}

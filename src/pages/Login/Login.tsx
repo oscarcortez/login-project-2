@@ -1,64 +1,54 @@
 import { FunctionComponent, ReactNode, useState } from 'react'
-import { RiMailLine } from 'react-icons/ri'
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form' //UseFormRegister
 import { zodResolver } from '@hookform/resolvers/zod'
-
-import { InputText } from '../../components/Form/InputText'
-import { Password } from '../../components/Form/Password'
-import { Button } from '../../components/Form/Button'
+import { Link } from 'react-router-dom'
 import { loginSchema } from '../../validations/loginSchema'
 
-import styles from './Login.module.css'
+import { LoginForm } from '../../components/Form/LoginForm'
 
-// type LoginFormData = {
-//   email: string
-//   password: string
-// }
+type FormValues = {
+  email: string
+  password: string
+}
 
 export const Login: FunctionComponent = (): ReactNode => {
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm({ resolver: zodResolver(loginSchema) })
+  } = useForm<FormValues>({ resolver: zodResolver(loginSchema) })
 
   const [isLoading, setIsLoading] = useState(false)
-  // const [isSuccess, setIsSuccess] = useState(false)
 
   const onSubmit = handleSubmit((data) => {
     setIsLoading(true)
     setTimeout(() => {
       setIsLoading(false)
       console.log(data)
-    }, 2000)
-    // setIsSuccess(true)
+    }, 1000)
   })
-  // console.log(errors)
+
+  const bottomLeftLink = (
+    <Link to="/forgot-password" className="text-gray-500 hover:underline">
+      Forgot Password?
+    </Link>
+  )
+
+  const bottomRightLink = (
+    <Link to="/register" className="text-sky-600 hover:underline ml-4">
+      Create an account
+    </Link>
+  )
+
   return (
-    <>
-      <div className={styles.form}>
-        <div className="mb-10">
-          <h1 className={styles.title}>Log In</h1>
-        </div>
-        <form className="flex flex-col gap-3" action="" onSubmit={onSubmit}>
-          <InputText
-            name="email"
-            type="text"
-            placeholder="Email"
-            icon={RiMailLine}
-            register={register}
-            error={errors.email?.message as string}
-          />
-          <Password
-            name="password"
-            placeholder="Password"
-            toggleMask
-            register={register}
-            error={errors.password?.message as string}
-          />
-          <Button loading={isLoading}>Log In</Button>
-        </form>
-      </div>
-    </>
+    <LoginForm
+      title="Log In"
+      onSubmit={onSubmit}
+      errors={errors}
+      register={register}
+      isLoading={isLoading}
+      bottomLeftLink={bottomLeftLink}
+      bottomRightLink={bottomRightLink}
+    />
   )
 }
